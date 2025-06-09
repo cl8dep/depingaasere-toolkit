@@ -71,7 +71,7 @@ const emit = defineEmits<{
         <form @submit="onSubmit" class="w-full max-w-3xl space-y-6">
             <div>
                 <FormField v-slot="{ componentField }" name="grossSalary">
-                    <FormLabel class="text-sm font-medium text-gray-700">Gross salary in UYU:</FormLabel>
+                    <FormLabel class="text-sm font-medium text-gray-700">Salario nominal en UYU:</FormLabel>
                     <FormControl>
                         <Input type="number" v-bind="componentField" />
                     </FormControl>
@@ -80,7 +80,7 @@ const emit = defineEmits<{
                 </FormField>
             </div>
 
-            <h2 class="text-lg font-semibold text-gray-900 mt-8 mb-2">BPS Contribution Calculation</h2>
+            <h2 class="text-lg font-semibold text-gray-900 mt-8 mb-2">Cálculo de aportes al BPS</h2>
 
             <FormField v-slot="{ value, handleChange }" type="checkbox" name="hasChildren">
                 <FormItem class="flex flex-row py-1">
@@ -88,7 +88,7 @@ const emit = defineEmits<{
                         <Checkbox :model-value="value" @update:model-value="handleChange" />
                     </FormControl>
                     <div class="space-y-0 leading-none">
-                        <FormLabel>Do you have children as dependents?</FormLabel>
+                        <FormLabel>¿Tenés hijos a cargo?</FormLabel>
                         <FormMessage />
                     </div>
                 </FormItem>
@@ -100,32 +100,32 @@ const emit = defineEmits<{
                         <Checkbox :model-value="value" @update:model-value="handleChange" />
                     </FormControl>
                     <div class="space-y-0 leading-none">
-                        <FormLabel>Do you have your spouse as dependent?</FormLabel>
+                        <FormLabel>¿Tu cónyuge está a cargo?</FormLabel>
                         <FormMessage />
                     </div>
                 </FormItem>
             </FormField>
 
             <div class="border-t pt-6 mt-6 space-y-2">
-                <h2 class="text-lg font-semibold text-gray-900 mt-0 mb-2">IRPF Calculation</h2>
+                <h2 class="text-lg font-semibold text-gray-900 mt-0 mb-2">Cálculo del IRPF</h2>
 
-                <h3 class="form-subSection">Number of dependents:</h3>
+                <h3 class="form-subSection">Cantidad de personas a cargo:</h3>
 
                 <FormField v-slot="{ componentField }" name="dependentDeductionFactor">
                     <FormItem>
-                        <FormLabel class="text-sm font-medium text-gray-700">Dependent deduction percentage:
+                        <FormLabel class="text-sm font-medium text-gray-700">Porcentaje de deducción por dependientes:
                         </FormLabel>
 
                         <Select v-bind="componentField">
                             <FormControl>
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select deduction percentage" />
+                                    <SelectValue placeholder="Seleccioná el porcentaje de deducción" />
                                 </SelectTrigger>
                             </FormControl>
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectItem value="0">
-                                        No deduction
+                                        Sin deducción
                                     </SelectItem>
                                     <SelectItem value="0.5">
                                         50%
@@ -141,8 +141,7 @@ const emit = defineEmits<{
                 </FormField>
 
                 <FormField v-slot="{ componentField }" name="childrenWithoutDisability">
-                    <FormLabel class="text-sm font-medium text-gray-700">Number of children without disability:
-                    </FormLabel>
+                    <FormLabel class="text-sm font-medium text-gray-700">Cantidad de hijos sin discapacidad:</FormLabel>
                     <FormControl>
                         <Input type="number" min="0" v-bind="componentField" />
                     </FormControl>
@@ -151,8 +150,7 @@ const emit = defineEmits<{
                 </FormField>
 
                 <FormField v-slot="{ componentField }" name="childrenWithDisability">
-                    <FormLabel class="text-sm font-medium text-gray-700">Number of children with disability:
-                    </FormLabel>
+                    <FormLabel class="text-sm font-medium text-gray-700">Cantidad de hijos con discapacidad:</FormLabel>
                     <FormControl>
                         <Input type="number" min="0" v-bind="componentField" />
                     </FormControl>
@@ -161,22 +159,19 @@ const emit = defineEmits<{
                 </FormField>
             </div>
 
-
             <div class="border-t pt-6 mt-6 space-y-2">
-                <h2 class="text-lg font-semibold text-gray-900 mb-2">If you are a professional:</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">Fill this information if you are a university graduated
-                    professional</p>
+                <h2 class="text-lg font-semibold text-gray-900 mb-2">Si sos profesional:</h2>
+                <p class="mt-1 text-sm/6 text-gray-600">Completá esta sección si sos profesional universitario</p>
 
                 <FormField v-slot="{ componentField }" name="solidarityFundContribution">
                     <FormItem>
-                        <FormLabel class="text-sm font-medium text-gray-700">Do you contribute to the Solidarity
-                            Fund?
+                        <FormLabel class="text-sm font-medium text-gray-700">¿Contribuís al Fondo de Solidaridad?
                         </FormLabel>
 
                         <Select v-bind="componentField">
                             <FormControl>
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select a verified email to display" />
+                                    <SelectValue placeholder="Seleccioná un monto" />
                                 </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -193,7 +188,6 @@ const emit = defineEmits<{
                                     <SelectItem value="2">
                                         2 BPC
                                     </SelectItem>
-
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
@@ -207,15 +201,14 @@ const emit = defineEmits<{
                             <Checkbox :model-value="value" @update:model-value="handleChange" />
                         </FormControl>
                         <div class="space-y-1 leading-none">
-                            <FormLabel>Additional Solidarity Fund?</FormLabel>
+                            <FormLabel>¿Pagás el Adicional al Fondo de Solidaridad?</FormLabel>
                             <FormMessage />
                         </div>
                     </FormItem>
                 </FormField>
 
                 <FormField v-slot="{ componentField }" name="professionalFundContribution">
-                    <FormLabel class="text-sm font-medium text-gray-700">Monthly contribution to CJPPU or Notarial
-                        Fund:
+                    <FormLabel class="text-sm font-medium text-gray-700">Aporte mensual a CJPPU o Caja Notarial:
                     </FormLabel>
                     <FormControl>
                         <Input type="number" min="0" v-bind="componentField" />
@@ -225,7 +218,7 @@ const emit = defineEmits<{
                 </FormField>
 
                 <FormField v-slot="{ componentField }" name="otherDeductions">
-                    <FormLabel class="text-sm font-medium text-gray-700">Other deductions:</FormLabel>
+                    <FormLabel class="text-sm font-medium text-gray-700">Otras deducciones:</FormLabel>
                     <FormControl>
                         <Input type="number" min="0" v-bind="componentField" />
                     </FormControl>
@@ -235,7 +228,7 @@ const emit = defineEmits<{
             </div>
 
             <Button type="submit" class="w-full mt-7" variant="default">
-                Calculate
+                Calcular salario líquido
             </Button>
         </form>
     </div>

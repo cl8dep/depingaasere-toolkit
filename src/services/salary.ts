@@ -103,7 +103,10 @@ export const calculateIRPF = (
         const tax = applicableAmount * rate / 100;
 
         brackets.push({
-            range: to !== 0 ? `From ${from} to ${to}` : `From ${from} onward`,
+            rangeInBpc: {
+                from: from,
+                to: to !== 0 ? to : Number.MAX_VALUE
+            },
             from: fromAmount,
             to: to !== 0 ? toAmount : null,
             appliedAmount: applicableAmount,

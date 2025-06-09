@@ -2,31 +2,28 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
         <button @click="$router.back()"
             class="text-sm text-blue-600 hover:underline mb-4 inline-flex items-center cursor-pointer">
-            ← Back
+            ← Volver
         </button>
-        <!-- Header -->
+
         <div class="text-center border-b border-gray-200 pb-6">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-                Net Salary Calculator - Uruguay <span class="text-blue-600">2025</span>
+                Calculadora de Salario Líquido - Uruguay <span class="text-blue-600">2025</span>
             </h1>
             <p class="mt-2 text-gray-600 text-base max-w-2xl mx-auto">
-                Calculate your net salary after taxes and social contributions.
+                Calculá tu salario líquido luego de impuestos y aportes sociales.
             </p>
         </div>
 
-        <!-- Form Section -->
         <section class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 sm:p-8">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Enter your salary data</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Ingresá los datos de tu salario</h2>
             <SalaryForm @form-submitted="handleFormSubmitted" />
         </section>
 
-        <!-- Divider -->
         <div v-if="taxesResult" class="border-t border-gray-200" />
 
-        <!-- Result Section -->
         <section v-if="taxesResult" class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 sm:p-8"
             ref="resultSection">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Calculation Result</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Resultado del cálculo</h2>
             <SalaryResult :result="taxesResult" />
         </section>
     </div>
@@ -39,7 +36,7 @@ import type { TaxCalculationParameters, TaxCalculationResult } from '@/types/sal
 import SalaryForm from '@/components/salary/SalaryForm.vue';
 import Footer from '@/components/footer/Footer.vue';
 import SalaryResult from '@/components/salary/SalaryResult.vue';
-import calculateTaxes from '../../services/salary';
+import calculateTaxes from '@/services/salary';
 import { nextTick, ref } from 'vue';
 
 const taxesResult = ref<null | TaxCalculationResult>(null)

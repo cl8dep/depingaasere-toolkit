@@ -58,7 +58,10 @@ export interface SocialSecurityContributions {
  */
 export interface IRPFBracketDetail {
     /** Human-readable range label (e.g., "From 15 to 30 BPC") */
-    range: string;
+    rangeInBpc: {
+        to: number,
+        from: number
+    };
 
     /** Start of the bracket in pesos */
     from: number;
